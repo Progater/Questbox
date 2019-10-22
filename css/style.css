@@ -41,7 +41,7 @@ header {
 main {
     display: flex;
     width: 100vw;
-    height: 50vh;
+    height: 60vh;
     justify-content: center;
     align-items: center;
 }
@@ -89,6 +89,10 @@ main {
     border-color: #000;
 }
 
+.btn:focus {
+    border: 2px dashed #000;
+}
+
 .btn.correct {
     --hue: var(--hue-correct);
     color: #000;
@@ -114,4 +118,12 @@ main {
 /* Elements to be hidden */
 .hide {
     display: none;
+}
+
+
+/* Smartphone Screens */
+@media(max-width: 480px) {
+    .btn-grid {
+        grid-template-columns: repeat(1, auto);
+    }
 }

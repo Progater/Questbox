@@ -1,0 +1,128 @@
+[
+    {
+        "question": "Wer war der erste Bundeskanzler?",
+        "answers": [
+            {
+                "answer": "Angela Merkel",
+                "correct": false
+            },
+            {
+                "answer": "Konrad Adenauer",
+                "correct": true
+            },
+            {
+                "answer": "Gerhard Schröder",
+                "correct": false
+            },
+            {
+                "answer": "Helmut Kohl",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "question": "Wie lange dauert die Legislaturperiode des Deutschen Bundestags?",
+        "answers": [
+            {
+                "answer": "Vier Jahre ",
+                "correct": true
+            },
+            {
+                "answer": "zwei Jahre ",
+                "correct": false
+            },
+            {
+                "answer": "SiebenJahre ",
+                "correct": false
+            },
+            {
+                "answer": "Fünf Jahre",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "question": "Was ist die Hauptstadt von Deutschland?",
+        "answers": [
+            {
+                "answer": "Paris",
+                "correct": false
+            },
+            {
+                "answer": "Stuttgart",
+                "correct": false
+            },
+            {
+                "answer": "Berlin",
+                "correct": true
+            },
+            {
+                "answer": "Polen",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "question": "Wie hoch ist die mittlere Körpertemperatur eines Menschen?",
+        "answers": [
+            {
+                "answer": "37,9°C",
+                "correct": false
+            },
+            {
+                "answer": "34,4°C",
+                "correct": false
+            },
+            {
+                "answer": "38°C",
+                "correct": false
+            },
+            {
+                "answer": "36,6°C",
+                "correct": true
+            }
+        ]
+    },
+    {
+        "question": "Was ist der höchste Berg der Erde?",
+        "answers": [
+            {
+                "answer": "Mont Blanc",
+                "correct": false
+            },
+            {
+                "answer": "Mont Everest",
+                "correct": true
+            },
+            {
+                "answer": "Schwarzwaldhut",
+                "correct": false
+            },
+            {
+                "answer": "Alpenkamm",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "question": "Was ist der längste Fluss Europas?",
+        "answers": [
+            {
+                "answer": "Nil",
+                "correct": false
+            },
+            {
+                "answer": "Donau",
+                "correct": false
+            },
+            {
+                "answer": "Wolga",
+                "correct": true
+            },
+            {
+                "answer": "Rhein",
+                "correct": false
+            }
+        ]
+    }
+]

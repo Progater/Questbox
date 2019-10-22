@@ -1,34 +1,14 @@
-const questions = [
-    {
-        question: "Wer ist der aktuelle Bundeskanzler?",
-        answers: [
-            { answer: "Angela Merkel", correct: true },
-            { answer: "Charles Darwin", correct: false },
-            { answer: "Dwight Eisenhower", correct: false },
-            { answer: "Der Esel", correct: false },
-        ],
-    },
-    {
-        question: "Wer ist der aktuelle dom?",
-        answers: [
-            { answer: "Angela ", correct: false },
-            { answer: "Charles ", correct: true },
-            { answer: "Dwight ", correct: false },
-            { answer: "Der ", correct: false },
-        ],
-    }
-];
-
-// Element variables
+// Global element variables
 const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
 const questionContainer = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-btns");
 
-// Total score
+// Global quiz variables
 var score = 0;
 var currentQuestionIdx = 0;
+var questions;
 
 // Callback-Handling
 startButton.addEventListener("click", onStartGame);
@@ -36,6 +16,21 @@ nextButton.addEventListener("click", () => {
     currentQuestionIdx++;
     setNextQuestion();
 });
+
+// Before anything else, load questions file via HTTP Request
+loadQuestionsAsync();
+
+// Load questions file (asynchronously)
+function loadQuestionsAsync() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "data/questions.json", true);
+    xhttp.send();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            questions = JSON.parse(xhttp.responseText);
+        }
+    };
+}
 
 // Callback starting new game
 function onStartGame() {
