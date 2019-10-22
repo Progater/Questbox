@@ -1,81 +1,126 @@
-var questions = [
+const questions = [
     {
-        prompt: "Wer ist die Bundeskanzlerin?",
+        question: "Wer ist der aktuelle Bundeskanzler?",
         answers: [
-            "Angela Merkel",
-            "Charles Darwin",
-            "Dwight Eisenhower",
-            "Der Esel"
+            { answer: "Angela Merkel", correct: true },
+            { answer: "Charles Darwin", correct: false },
+            { answer: "Dwight Eisenhower", correct: false },
+            { answer: "Der Esel", correct: false },
         ],
-        correct: 0
     },
     {
-        prompt: "Wann war der Zweite Weltkrieg?",
+        question: "Wer ist der aktuelle dom?",
         answers: [
-            "1391-1425",
-            "2017-2019",
-            "1939-1945",
-            "1871-1895"
+            { answer: "Angela ", correct: false },
+            { answer: "Charles ", correct: true },
+            { answer: "Dwight ", correct: false },
+            { answer: "Der ", correct: false },
         ],
-        correct: 2
-    },
-    {
-        prompt: "Was ist die Hauptstadt von Deutschland?",
-        answers: [
-            "Warschau",
-            "Berlin",
-            "Stuttgart",
-            "London"
-        ],
-        correct: 1
-    },
-    {
-        prompt: "Wer hat Dynamit erfunden?",
-        answers: [
-            "Chuck Norris",
-            "Charles Kirchenau",
-            "Alexander Flemming",
-            "Alfred Nobel"
-        ],
-        correct: 3
     }
 ];
 
-// Ask a new question
+// Element variables
+const startButton = document.getElementById("start-btn");
+const nextButton = document.getElementById("next-btn");
+const questionContainer = document.getElementById("question-container");
+const questionElement = document.getElementById("question");
+const answerButtons = document.getElementById("answer-btns");
+
+// Total score
 var score = 0;
-function askQuestion(questionNumber) {
-    // If all questions have been asked, end the game
-    if (questionNumber >= questions.length) {
-        document.writeln("<h1 style='text-align:center'>Deine Punkte: " + score + "/" + questions.length + "</h1>");
-        return;
-    }
+var currentQuestionIdx = 0;
 
-    // Populate new question
-    var question = questions[questionNumber];
-    document.getElementById("question").innerHTML = "<h2>" + question.prompt + "</h2>";
+// Callback-Handling
+startButton.addEventListener("click", onStartGame);
+nextButton.addEventListener("click", () => {
+    currentQuestionIdx++;
+    setNextQuestion();
+});
 
-    // Clear answer list
-    var answerList = document.getElementById("answerList");
-    while (answerList.firstChild) {
-        answerList.firstChild.remove();
-    }
+// Callback starting new game
+function onStartGame() {
 
-    // Populate answer list anew
-    for (let i = 0; i < questions.length; i++) {
-        var answer = document.createElement("li");
-        answer.innerHTML = questions[questionNumber].answers[i];
-        answer.addEventListener("click", function () {
-            // Score if answered correctly
-            if (i == questions[questionNumber].correct) {
-                score++;
-            }
+    // Setup quiz UI
+    questionContainer.classList.remove("hide");
+    startButton.classList.add("hide");
 
-            // Ask a new question
-            askQuestion(questionNumber + 1);
-        });
-        answerList.appendChild(answer);
+    // Setup a new question
+    setNextQuestion();
+}
+
+// Set a new question
+function setNextQuestion() {
+
+    // Reset UI state
+    resetQuestion();
+
+    // If all questions have been asked, end the game and prepare for restart
+    if (currentQuestionIdx >= questions.length) {
+        questionElement.innerHTML = `Deine Punkte: ${score}/${questions.length}`;
+        startButton.innerHTML = "Erneut versuchen";
+        startButton.classList.remove("hide");
+        currentQuestionIdx = 0;
+        score = 0;
+    } else {
+        showQuestion(questions[currentQuestionIdx]);
     }
 }
 
-// Start quiz game
-askQuestion(0);
+// Reset question board
+function resetQuestion() {
+    nextButton.classList.add("hide");
+    document.body.classList.remove("correct", "wrong");
+    while (answerButtons.firstChild) {
+        answerButtons.firstChild.remove();
+    }
+}
+
+// Show a question from database
+function showQuestion(question) {
+
+    // Populate new question
+    questionElement.innerHTML = question.question;
+
+    // Populate answer buttons
+    question.answers.forEach(answer => {
+        const button = document.createElement("button");
+        button.classList.add("btn");
+        button.innerHTML = answer.answer;
+        if (answer.correct) {
+            button.dataset.correct = true;
+        }
+        button.addEventListener("click", onAnswerClicked);
+        answerButtons.appendChild(button);
+    });
+}
+
+// Callback by answer button clicked
+function onAnswerClicked(e) {
+
+    // show next button
+    nextButton.classList.remove("hide");
+
+    // set new class (correct/wrong) based on correct value
+    // also prevent buttons from retrieving new answer
+    addClass(document.body, e.target.dataset.correct);
+    Array.from(answerButtons.children).forEach(button => {
+        addClass(button, button.dataset.correct);
+        button.removeEventListener("click", onAnswerClicked);
+    });
+
+    // score update
+    if (e.target.dataset.correct) {
+        score++;
+    }
+}
+
+// Add a new class based on answer selected
+function addClass(element, correct) {
+    if (correct) {
+        element.classList.add("correct");
+        element.classList.remove("wrong");
+    } else {
+        element.classList.remove("correct");
+        element.classList.add("wrong");
+    }
+}
