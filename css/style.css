@@ -41,9 +41,10 @@ header {
 main {
     display: flex;
     width: 100vw;
-    height: 60vh;
+    height: auto;
     justify-content: center;
     align-items: center;
+    margin-top: 2rem;
 }
 
 /* Postcard effect for whole question section */
@@ -121,8 +122,8 @@ main {
 }
 
 
-/* Smartphone Screens */
-@media(max-width: 480px) {
+/* Smaller screens */
+@media(max-width: 768px) {
     .btn-grid {
         grid-template-columns: repeat(1, auto);
     }
