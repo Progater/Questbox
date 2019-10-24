@@ -6,9 +6,9 @@ const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-btns");
 
 // Global quiz variables
-var score = 0;
-var currentQuestionIdx = 0;
-var questions;
+let score = 0;
+let currentQuestionIdx = 0;
+let questions;
 
 // Callback-Handling
 startButton.addEventListener("click", onStartGame);
@@ -22,7 +22,7 @@ loadQuestionsAsync();
 
 // Load questions file (asynchronously)
 function loadQuestionsAsync() {
-    var xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
     xhttp.open("GET", "data/questions.json", true);
     xhttp.send();
     xhttp.onreadystatechange = function () {
