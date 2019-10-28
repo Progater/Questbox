@@ -1,6 +1,7 @@
 // Global element variables
 const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
+const addButton = document.getElementById("add-btn");
 const questionContainer = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-btns");
@@ -22,14 +23,22 @@ loadQuestionsAsync();
 
 // Load questions file (asynchronously)
 function loadQuestionsAsync() {
-    let xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "data/questions.json", true);
-    xhttp.send();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            questions = JSON.parse(xhttp.responseText);
-        }
-    };
+
+    // Old way: use XHR approach
+    // let xhr = new XMLHttpRequest();
+    // xhr.open("GET", "data/questions.json", true);
+    // xhr.send();
+    // xhr.onload = function () {
+    //     if (this.status == 200) {
+    //         questions = JSON.parse(xhr.responseText);
+    //     }
+    // };
+
+    // New way: use Fetch API
+    fetch("data/questions.json")
+    .then(res => res.json())
+    .then(data => questions = data)
+    .catch(error => console.log(error));
 }
 
 // Callback starting new game
@@ -38,6 +47,7 @@ function onStartGame() {
     // Setup quiz UI
     questionContainer.classList.remove("hide");
     startButton.classList.add("hide");
+    addButton.classList.add("hide");
 
     // Setup a new question
     setNextQuestion();

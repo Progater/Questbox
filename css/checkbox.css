@@ -1,0 +1,45 @@
+/* Checkbox restyling */
+
+/* Hide the browser's default checkbox */
+input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Apply new style to active checkbox */
+input[type=checkbox] {
+    position: relative;
+    width: 2em;
+    height: 2em;
+
+    --hue: var(--hue-correct);
+    background-color: hsl(var(--hue), 100%, 50%);
+    border: 2px solid hsl(var(--hue), 100%, 30%);
+    border-radius: 5px;
+    color: #000;
+
+    /* Adjusts the position of the checkboxes on the text baseline */ 
+    vertical-align: -10px;
+}
+  
+input[type=checkbox]::before {
+    content: "✔";
+    font-size: 2.1em;
+
+    position: absolute;
+    right: 0;
+    top: -0.3em;
+    visibility: hidden;
+  }
+  
+input[type=checkbox]:checked::before {
+    /* Use `visibility` instead of `display` to avoid recalculating layout */
+    visibility: visible;
+}
+  
+input[type=checkbox]:disabled {
+    border-color: black;
+    background: #ddd;
+    color: gray;
+}

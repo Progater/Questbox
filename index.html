@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/checkbox.css">
     <script defer src="js/main.js"></script>
+    <script defer src="js/submit-question.js"></script>
     <title>Questbox</title>
 </head>
+
 <body>
     <!-- Heading -->
     <header>
@@ -27,13 +31,42 @@
                     <button class="btn">Antwort 4</button>
                 </div>
             </div>
-    
+
             <!-- Controls -->
             <div class="controls">
-                <button id="start-btn" class="start-btn btn">Quiz Starten</button>
-                <button id="next-btn" class="next-btn btn hide">Nächste Frage</button>
+                <button id="start-btn" class="control-btn btn">Quiz Starten</button>
+                <button id="next-btn" class="control-btn btn hide">Nächste Frage</button>
+                <button id="add-btn" class="control-btn btn">Frage einrechen</button>
             </div>
+
+            <!-- Add Question form -->
+            <form id="add-form" class="hide">
+                <div id="validate-error" class="validate-error"></div>
+                <input type="text" id="new-question" class="question" placeholder="Neue Frage...">
+                <div class="btn-grid">
+                    <div class="answer-container">
+                        <input type="text" id="new-answer-1" class="answer-btn btn" placeholder="Antwort 1...">
+                        <input type="checkbox" id="new-answer-1-correct" class="check">
+                    </div>
+                    <div class="answer-container">
+                        <input type="text" id="new-answer-2" class="answer-btn btn" placeholder="Antwort 2...">
+                        <input type="checkbox" id="new-answer-2-correct" class="check">
+                    </div>
+                    <div class="answer-container">
+                        <input type="text" id="new-answer-3" class="answer-btn btn" placeholder="Antwort 3...">
+                        <input type="checkbox" id="new-answer-3-correct" class="check">
+                    </div>
+                    <div class="answer-container">
+                        <input type="text" id="new-answer-4" class="answer-btn btn" placeholder="Antwort 4...">
+                        <input type="checkbox" id="new-answer-4-correct" class="check">
+                    </div>
+                </div>
+                <div class="controls">
+                    <input type="submit" id="submit-question" class="control-btn btn" value="Bestätigen">
+                </div>
+            </form>
         </div>
     </main>
 </body>
+
 </html>
