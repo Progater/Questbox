@@ -84,14 +84,14 @@
         ]
     },
     {
-        "question": "Was ist der höchste Berg der Erde?",
+        "question": "Wie heißt der höchste Berg der Erde?",
         "answers": [
             {
                 "answer": "Mont Blanc",
                 "correct": false
             },
             {
-                "answer": "Mont Everest",
+                "answer": "Mount Everest",
                 "correct": true
             },
             {
@@ -105,7 +105,7 @@
         ]
     },
     {
-        "question": "Was ist der längste Fluss Europas?",
+        "question": "Wie heißt der längste Fluss Europas?",
         "answers": [
             {
                 "answer": "Nil",
@@ -122,6 +122,90 @@
             {
                 "answer": "Rhein",
                 "correct": false
+            }
+        ]
+    },
+    {
+        "question": "Wann starben die Dinosaurier aus?",
+        "answers": [
+            {
+                "answer": "vor 30 Millionen Jahren",
+                "correct": false
+            },
+            {
+                "answer": "von 4 Millionen Jahren",
+                "correct": false
+            },
+            {
+                "answer": "vor 2500 v. Chr.",
+                "correct": false
+            },
+            {
+                "answer": "vor 65 Millionen Jahren",
+                "correct": true
+            }
+        ]
+    },
+    {
+        "question": "Was hat Alfred Nobel erfunden?",
+        "answers": [
+            {
+                "answer": "Dynamit",
+                "correct": true
+            },
+            {
+                "answer": "Penicillin",
+                "correct": false
+            },
+            {
+                "answer": "Schwarzwälder Kirschtorte",
+                "correct": false
+            },
+            {
+                "answer": "Glühbirne",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "question": "Wer betrat als zweiter Mensch den Mond?",
+        "answers": [
+            {
+                "answer": "Chuck Norris",
+                "correct": false
+            },
+            {
+                "answer": "Buzz Aldrin",
+                "correct": true
+            },
+            {
+                "answer": "Neil Armstrong",
+                "correct": false
+            },
+            {
+                "answer": "Irgendein Müller",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "question": "Wie alt ist die Erde?",
+        "answers": [
+            {
+                "answer": "6.000 Jahre",
+                "correct": false
+            },
+            {
+                "answer": "10.000 Jahre",
+                "correct": false
+            },
+            {
+                "answer": "40 Millionen Jahre",
+                "correct": false
+            },
+            {
+                "answer": "4,5 Milliarden Jahre",
+                "correct": true
             }
         ]
     }
